@@ -8,16 +8,12 @@ import { useEffect, useState } from "react";
 
 export default function Home({ sessions }: { sessions: Session[] }) {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFilter = (field: string, value: string) => {
     router.query[field] = value;
     router.push(router);
   };
-
-  useEffect(() => {
-    router.isReady && setIsLoading(false);
-  }, [router.isReady]);
 
   useEffect(() => {
     const handleStartLoading = () => {
